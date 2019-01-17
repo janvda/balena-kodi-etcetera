@@ -2,6 +2,7 @@ version: '2'
 volumes:
     node-red-data:
     influxdb-data:
+    kodi-data: {}
 services:
   influxdb:
     build: influxdb
