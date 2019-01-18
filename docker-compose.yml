@@ -73,6 +73,7 @@ services:
     depends_on:
       - grafana
       - node-red
+      - kodi
     ports:
        - "80:80"
        - "443:443"
