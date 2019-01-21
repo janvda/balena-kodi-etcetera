@@ -14,6 +14,10 @@ RUN npm install --unsafe-perm node-red-node-sqlite
 RUN git clone https://github.com/andreiva/raspberry-pi-bme280.git && cd raspberry-pi-bme280 && make && cd ..
 
 # see https://www.balena.io/docs/learn/develop/hardware/i2c-and-spi/
-RUN sed -e 's/"start": "node/"start": "modprobe i2c-dev && node/' package.json
+# following command changes the line in package.json :
+#    "start": "node $NODE_OPTIONS node_modules/node-red/red.js -v $FLOWS"
+# into
+#    "start": "modprobe i2c-dev && node $NODE_OPTIONS node_modules/node-red/red.js -v $FLOWS"
+RUN sed -i  -e 's/node \$NODE_OPTIONS/modprobe i2c-dev \&\& node $NODE_OPTIONS/' package.json
 
 COPY ./settings.js /data/settings.js
