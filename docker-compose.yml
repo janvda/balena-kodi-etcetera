@@ -83,6 +83,8 @@ services:
     depends_on:
         - mqtt
     restart: always
+    labels:
+      io.balena.features.kernel-modules: '1'
   nginx:
     build : nginx
     depends_on:
