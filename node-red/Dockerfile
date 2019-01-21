@@ -2,7 +2,7 @@ FROM nodered/node-red-docker:rpi-v8
 
 # installing an editor
 USER root
-RUN apt-get update && apt-get install nano
+RUN apt-get update && apt-get install nano sqlite3
 USER node-red
 
 RUN npm install node-red-contrib-resinio
