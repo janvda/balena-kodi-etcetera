@@ -76,6 +76,7 @@ services:
       io.balena.update.handover-timeout: ''
   node-red:
     build: node-red
+    privileged: true
     volumes:
        - 'node-red-data:/data'
     ports:
