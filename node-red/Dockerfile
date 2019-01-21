@@ -13,4 +13,7 @@ RUN npm install --unsafe-perm node-red-node-sqlite
 #compile raspberry-pi-bme280 library
 RUN git clone https://github.com/andreiva/raspberry-pi-bme280.git && cd raspberry-pi-bme280 && make && cd ..
 
+# see https://www.balena.io/docs/learn/develop/hardware/i2c-and-spi/
+RUN sed -e 's/"start": "node/"start": "modprobe i2c-dev && node/' package.json
+
 COPY ./settings.js /data/settings.js
