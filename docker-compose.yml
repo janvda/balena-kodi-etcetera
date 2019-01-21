@@ -4,6 +4,18 @@ volumes:
     influxdb-data:
     kodi-data: {}
 services:
+  samba:
+    #  hostname: samba  # doesn't work
+    image: dastrasmue/rpi-samba 
+    command:  -u "jan:passw0rd!67" -s "node-red-data:/mount/node-red-data:rw:jan"  
+    volumes:
+       - 'node-red-data:/mount/node-red-data'
+    ports:
+    #  - "137:137"
+    #  - "137:137/udp"
+      - "139:139"
+      - "445:445"
+    #  - "445:445/udp"
   influxdb:
     build: influxdb
     container_name: influxdb
