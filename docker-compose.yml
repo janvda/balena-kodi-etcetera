@@ -86,6 +86,8 @@ services:
     restart: always
     labels:
       io.balena.features.kernel-modules: '1'
+    environment:
+      - TZ=Europe/Brussels
   nginx:
     build : nginx
     depends_on:
