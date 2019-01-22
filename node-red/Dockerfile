@@ -3,10 +3,13 @@ FROM nodered/node-red-docker:rpi-v8
 # installing an editor
 USER root
 RUN apt-get update && apt-get install nano sqlite3 libi2c-dev i2c-tools wiringpi
-USER node-red
 
 # allow to do sudo within node-red
 RUN sudo usermod -a -G sudo node-red
+
+USER node-red
+
+
 
 RUN npm install node-red-contrib-resinio
 RUN npm install node-red-dashboard
