@@ -5,6 +5,9 @@ USER root
 RUN apt-get update && apt-get install nano sqlite3 libi2c-dev i2c-tools wiringpi
 USER node-red
 
+# allow to do sudo within node-red
+RUN usermod -a -G sudo node-red
+
 RUN npm install node-red-contrib-resinio
 RUN npm install node-red-dashboard
 RUN npm install node-red-contrib-credentials
