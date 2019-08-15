@@ -1,8 +1,10 @@
-# balena-kodi
-A boilerplate for getting up and running with [Kodi](https://kodi.tv/)
-open source home theatre on your balena-enabled [Raspberry Pi](https://www.raspberrypi.org/).
+# balena-kodi-etcetera
+Is based on my 2 github repositories:
+1. [balena-kodi](https://github.com/janvda/balena-kodi) github repository
+ (see its [README.md](https://github.com/janvda/balena-kodi/blob/master/README.md))
+2. [balena-node-red-mqtt-nginx-TIG-stack](https://github.com/janvda/balena-node-red-mqtt-nginx-TIG-stack)(see its [README.md](https://github.com/janvda/balena-node-red-mqtt-nginx-TIG-stack/blob/master/README.md))
 
-## Evnvironment variables
+## Environment variables
 
 Set these environment variables in the application's dashboard on balena.
 
