@@ -9,8 +9,8 @@ USER root
 # for the node-red service in the BalenaCloud dashboard.
 RUN npm install -g --unsafe-perm node-red-admin
 
-# installing an editor
-# RUN apt-get update && apt-get install nano sqlite3 libi2c-dev i2c-tools wiringpi
+# installing stuff of raspberry-pi-bme280 and sqlite
+RUN apt-get update && apt-get install sqlite3 libi2c-dev i2c-tools wiringpi
 
 # following command should assure that user node-red can use sudo without requiring to enter a password.
 # RUN echo "node-red ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
