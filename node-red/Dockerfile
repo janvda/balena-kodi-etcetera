@@ -34,6 +34,6 @@ RUN npm install https://github.com/janvda/node-red-contrib-balena.git#service_st
 #    "start": "node $NODE_OPTIONS node_modules/node-red/red.js -v $FLOWS"
 # into
 #    "start": "modprobe i2c-dev && node $NODE_OPTIONS node_modules/node-red/red.js -v $FLOWS"
-RUN sed -i  -e 's/node \$NODE_OPTIONS/modprobe i2c-dev \&\& node $NODE_OPTIONS/' package.json
+#RUN sed -i  -e 's/node \$NODE_OPTIONS/modprobe i2c-dev \&\& node $NODE_OPTIONS/' package.json
 
 COPY ./settings.js /data/settings.js
