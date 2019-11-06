@@ -1,6 +1,7 @@
 version: '2'
 volumes:
     node-red-data:
+    influxdb-data:
     kodi-data: {}
 services:
   samba:
@@ -15,6 +16,43 @@ services:
       - "139:139"
       - "445:445"
     #  - "445:445/udp"
+  influxdb:
+    build: influxdb
+    container_name: influxdb
+    # privileged added so usb drive can be mounted.
+    privileged: true
+    volumes:
+        # take care that the mount location "/mnt/influxdb" becomes overwritten
+        # by the mount location specified in the influxdb Dockerfile.
+        - 'influxdb-data:/mnt/influxdb'   
+    ports:
+      # The API for InfluxDB is served on port 8086
+      - "8082:8082"
+      - "8086:8086"
+      # UDP Port
+      - "8089:8089"
+    restart: always
+  telegraf:
+    # Full tag list: https://hub.docker.com/r/library/telegraf/tags/
+    build : telegraf
+    pid: "host"
+    network_mode: "host"
+    privileged: true
+    labels:
+      io.resin.features.balena-socket: '1'
+    depends_on:
+      - influxdb
+    restart: always
+    environment:
+       - interval=60s
+       - flush_interval=60s
+  grafana:
+    build: grafana 
+    ports:
+       - "3000:3000"
+    depends_on:
+       - influxdb
+    restart: always
   mqtt:
     image: panuwitp/mosquitto-arm
     ports:
@@ -53,6 +91,7 @@ services:
   nginx:
     build : nginx
     depends_on:
+      - grafana
       - node-red
       - kodi
     ports:
