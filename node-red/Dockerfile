@@ -2,7 +2,7 @@ FROM nodered/node-red:1.0.2-12-arm32v7
 
 ######### Changing to root as below commands should be run as root #############
 
-#USER root
+USER root
 
 # Following command installs node-red-admin which is needed if you want to create a hashed password 
 # for the node-red editor.  For that run command "node-red-admin hash-pw" in a terminal window
@@ -17,7 +17,7 @@ RUN apk update && apk add sudo wiringpi wiringpi-dev
 RUN echo "node-red ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 ######### Changing back to node-red user #####################
-#USER node-red
+USER node-red
 
 RUN npm install node-red-dashboard
 RUN npm install node-red-contrib-credentials
