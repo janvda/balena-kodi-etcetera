@@ -10,7 +10,7 @@ USER root
 RUN npm install -g --unsafe-perm node-red-admin
 
 # installing stuff for raspberry-pi-bme280 and sqlite
-RUN apt-get update && apt-get install sqlite3 libi2c-dev i2c-tools wiringpi
+RUN apk update && apk add sqlite3 libi2c-dev i2c-tools wiringpi && rm -rf /var/cache/apk/*
 
 # following command should assure that user node-red can use sudo without requiring to enter a password.
 # RUN echo "node-red ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
