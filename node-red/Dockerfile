@@ -35,6 +35,6 @@ RUN git clone https://github.com/andreiva/raspberry-pi-bme280.git && cd raspberr
 #    "start": "node $NODE_OPTIONS node_modules/node-red/red.js -v $FLOWS"
 # into
 #    "start": "modprobe i2c-dev && node $NODE_OPTIONS node_modules/node-red/red.js -v $FLOWS"
-#RUN sed -i  -e 's/node \$NODE_OPTIONS/modprobe i2c-dev \&\& node $NODE_OPTIONS/' package.json
+RUN sed -i  -e 's/node \$NODE_OPTIONS/modprobe i2c-dev \&\& node $NODE_OPTIONS/' package.json
 
 COPY ./settings.js /data/settings.js
