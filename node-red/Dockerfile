@@ -10,7 +10,7 @@ USER root
 RUN npm install -g --unsafe-perm node-red-admin
 
 # installing stuff for raspberry-pi-bme280 and sqlite
-RUN apk update && apk add sudo
+RUN apk update && apk add sudo wiringpi wiringpi-dev
 #RUN apk update && apk add sqlite3 libi2c-dev i2c-tools wiringpi && rm -rf /var/cache/apk/*
 
 # following command should assure that user node-red can use sudo without requiring to enter a password.
@@ -28,7 +28,7 @@ RUN npm install node-red-contrib-credentials
 RUN npm install https://github.com/janvda/node-red-contrib-balena.git#service_start_stop_nodes
 
 #compile raspberry-pi-bme280 library
-#RUN git clone https://github.com/andreiva/raspberry-pi-bme280.git && cd raspberry-pi-bme280 && make && cd ..
+RUN git clone https://github.com/andreiva/raspberry-pi-bme280.git && cd raspberry-pi-bme280 && make && cd ..
 
 # see https://www.balena.io/docs/learn/develop/hardware/i2c-and-spi/
 # following command changes the line in package.json :
