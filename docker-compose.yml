@@ -40,7 +40,7 @@ services:
     build: node-red
     privileged: true
     volumes:
-       - 'node-red-data:/data'
+       - 'node-red-data:/data2'
     ports:
        - "1880:1880"
     depends_on:
