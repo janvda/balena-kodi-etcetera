@@ -1,7 +1,6 @@
 version: '2'
 volumes:
     node-red-data:
-    node-red-data2:
     kodi-data: {}
 services:
   samba:
@@ -41,8 +40,7 @@ services:
     build: node-red
     privileged: true
     volumes:
-       - 'node-red-data:/dataX'
-       - 'node-red-data2:/data2'
+       - 'node-red-data:/data'
     ports:
        - "1880:1880"
     depends_on:
