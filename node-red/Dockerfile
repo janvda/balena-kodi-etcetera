@@ -38,3 +38,6 @@ RUN git clone https://github.com/andreiva/raspberry-pi-bme280.git && cd raspberr
 RUN sed -i  -e 's/node \$NODE_OPTIONS/modprobe i2c-dev \&\& node $NODE_OPTIONS/' package.json
 
 COPY ./settings.js /data/settings.js
+COPY ./entrypoint.sh .
+
+ENTRYPOINT  ["bash", "entrypoint.sh"]
