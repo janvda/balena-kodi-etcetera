@@ -40,4 +40,5 @@ RUN sed -i  -e 's/node \$NODE_OPTIONS/modprobe i2c-dev \&\& node $NODE_OPTIONS/'
 COPY ./settings.js /data/settings.js
 COPY ./entrypoint.sh .
 
+# the below entrypoint replaces the entrypoint of the nodered/node-red
 ENTRYPOINT  ["bash", "entrypoint.sh"]
