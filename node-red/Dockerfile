@@ -27,6 +27,7 @@ RUN npm install node-red-contrib-credentials
 # a node to retrieve the state of all services.
 RUN npm install https://github.com/janvda/node-red-contrib-balena.git#service_start_stop_nodes
 
+# installing my version of the node-red-contrib-google-oauth2
 RUN npm install https://github.com/janvda/node-red-contrib-google-oauth2.git
 
 #compile raspberry-pi-bme280 library
