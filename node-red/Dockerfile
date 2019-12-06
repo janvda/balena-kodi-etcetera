@@ -28,7 +28,7 @@ RUN npm install node-red-contrib-credentials
 RUN npm install https://github.com/janvda/node-red-contrib-balena.git#service_start_stop_nodes
 
 # installing my version of the node-red-contrib-google-oauth2
-RUN npm install https://github.com/janvda/node-red-contrib-google-oauth2.git
+# RUN npm install https://github.com/janvda/node-red-contrib-google-oauth2.git
 
 #compile raspberry-pi-bme280 library
 RUN git clone https://github.com/andreiva/raspberry-pi-bme280.git && cd raspberry-pi-bme280 && make && cd ..
